@@ -77,7 +77,111 @@ N --> O[Take-Profit: EQH/EQL или POC]
 
 ---
 
-#### **5. Заключение**
+
+
+### Обновленный Анализ Методичек по Smart Money Concept (SMC) - часть 2
+
+#### **5. Ключевые Термины и Их Интерпретация (Продолжение)**
+Уточнены и расширены базовые термины SMC:
+
+| Термин               | Описание из методички                                                                 | Соотношение с общими знаниями TA                                                                 |
+|----------------------|---------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------|
+| **Smart Money Trap** | "Умные деньги" создают ложные Order Block, чтобы заставить розничных трейдеров войти в невыгодные позиции. Trade только после подтверждения inducement или liquidity sweep. | Новая концепция, специфичная для SMC; предупреждает о риске слепого следования за Order Block. |
+| **Flip Entry Module** | Когда цена касается HTF Supply/Demand Zone, переключайтесь на LTF и ждите подтверждения (ChoCH, pullback на OB). Процесс, когда Demand превращается в Supply (D2S) или наоборот. | Механизм коррекции позиций "умными деньгами"; требует мульти-таймфреймного анализа. |
+| **Single Candle Mitigation** | Мощный способ добавления множественных входов в profitable trades. Входы на sweeping liquidity (major high/low) или single candle OB. | Техника управления позицией; аналогична sweep entries, но фокусируется на одной свече. |
+| **Ping Pong Entries** | Торговля с обеих сторон движения (buy/sell) на одном POI. Требует идентификации POI и реакционных зон. | Стратегия для опытных трейдеров; использует колебания цены вокруг ключевых уровней. |
+| **Session Liquidity** | Каждый Session High/Low (Asian, London, NY) выступает как ликвидность. Sweep Session Low ведет к продолжению тренда, sweep Session High — к развороту. | Временные зоны ликвидности; связаны с часовыми поясами торговых сессий. |
+| **Daily Candle Liquidity** | Предыдущий Day High/Low действуют как ежедневная ликвидность. Sweep previous day low в bull рынке и previous day high в bear рынке указывают на краткосрочные развороты. | Аналогичен Session Liquidity, но на дневном таймфрейме. |
+
+---
+
+#### **2. Ключевые Графики и Их Значение**
+##### **2.1. Smart Money Trap (стр. 1)**  
+- **Инсайты**:  
+  - Order Block не всегда является истинным сигналом SMC.  
+  - Трейдер должен ждать inducement (ложный breakout) или liquidity sweep (снятие ликвидности) перед входом.  
+  - Пример: Price tap на Extreme Order Block → ожидание liquidity sweep → вход после确认.  
+
+##### **2.2. Flip Entry Module (стр. 2)**  
+- **Инсайты**:  
+  - Когда цена касается HTF Supply/Demand Zone, переключайтесь на LTF (M1/M5).  
+  - Вход разрешен только после ChoCH (смена характера) и small pullback на Order Block.  
+  - Пример: Price tap на Recent OB → failure to hold OB → создание нового Supply Zone → ожидание IDM (Inducement or Liquidity Sweep).  
+
+##### **2.3. Single Candle Mitigation (стр. 5-6)**  
+- **Инсайты**:  
+  - Входы на sweeping major high/low (ликвидность) или single candle OB.  
+  - Требуется tap на LTF POI для confirmation.  
+  - Пример: Sweep Previous Candle High → single candle mitigation entry → multiple entries.  
+
+##### **2.4. Session Liquidity (стр. 11-12)**  
+- **Инсайты**:  
+  - Asian Session: Low — ликвидность для buy, High — для sell.  
+  - London Session: Продолжение тренда Asian Session.  
+  - New York Session: Разворот, если Asian Low swept; continuation, если нет.  
+  - Пример: Market taken out Asian Low → reversa move up.  
+
+##### **2.5. Multiple Time Frame (стр. 15-17)**  
+- **Инсайты**:  
+  - HTF (D1/W1) для определения структуры и POI.  
+  - LTF (M1/M5) для подтверждения входа.  
+  - Пример: Forex — HTF M15, LTF M1; Crypto — HTF H1, LTF M5.  
+
+---
+
+#### **6. Обновленный Алгоритм Сетапов (Интеграция Новых Элементов)**
+```mermaid
+graph TD
+A[Определение Тренда (HTF: D1/W1)] --> B{Восходящий: HH+HL<br/>Нисходящий: LH+LL<br/>Консолидация: Игнорировать}
+B --> C[Маркировка Структуры (BOS/ChoCH)]
+C --> D[Идентификация POI (Session/Daily Liquidity, Major High/Low)]
+D --> E[Поиск Imbalance/FVG]
+E --> F[Поиск Order Block (связанный с imbalance и liquidity sweep)]
+F --> G{Тип Входа}
+G -- Smart Money Trap --> H[Ожидание inducement/liquidity sweep]
+G -- Flip Entry --> I[Переключение на LTF (M1/M5) + ожидание ChoCH/pullback]
+G -- Single Candle Mitigation --> J[Вход на sweeping liquidity/single candle OB]
+G -- Ping Pong --> K[Идентификация POI + trade с обеих сторон]
+H & I & J & K --> L[Подтверждение на Младшем ТФ (M5/M15)]
+L --> M[Вход: OB в OTE + подтверждающий паттерн]
+M --> N[Stop-Loss: За экстремумом OB]
+N --> O[Take-Profit: EQH/EQL или POC]
+```
+
+**Детализация обновлений:**  
+- **Шаг H (Smart Money Trap)**: Фильтрация ложных Order Block путем ожидания манипуляций "умных денег".  
+- **Шаг I (Flip Entry)**: Мulti-timeframe correlation: HTF для POI, LTF для confirmation.  
+- **Шаг J (Single Candle Mitigation)**: Добавление техники управления позицией для maximizing profits.  
+- **Шаг K (Ping Pong)**: Стратегия для агрессивных трейдеров, использующая колебания цены вокруг POI.  
+- **Шаг D (Session/Daily Liquidity)**: Интеграция временных зон ликвидности как ключевых POI.  
+
+---
+
+#### **7. Отчет об Изменениях**
+| Параметр               | Предыдущая Версия                  | Обновленная Версия                                  | Причина Изменений                                                                 |
+|------------------------|------------------------------------|-----------------------------------------------------|----------------------------------------------------------------------------------|
+| **Алгоритм Определения POI** | Только Fibo-уровни и Imbalance     | + Session/Daily Liquidity, Major High/Low           | Увеличение точности идентификации зон ликвидности "умных денег".                 |
+| **Входные Сетапы**     | OB, BB, RJB                       | + Smart Money Trap, Flip Entry, Single Candle Mitigation, Ping Pong | Интеграция новых стратегий для разных рыночных условий.                         |
+| **Мульти-таймфреймовый Анализ** | Общий принцип                     | + Конкретные примеры (Forex: HTF M15/LTF M1; Crypto: HTF H1/LTF M5) | Адаптация под разные активы и торговые стили.                                   |
+| **Управление Позицией** | Стандартные SL/TP                 | + Single Candle Mitigation (multiple entries)       | Максимальное использование прибыльных movement.                                 |
+
+---
+
+#### **8. Заключение**
+Обновленный алгоритм SMC интегрирует ключевые элементы новых методичек:  
+1. **Предотвращение Ложных Сигналов**: Smart Money Trap и требование inducement/liquidity sweep снижают количество ложных Order Block.  
+2. **Мульти-таймфреймовый Подход**: Flip Entry и Ping Pong_entries требуют strict correlation между HTF и LTF.  
+3. **Временные Зоны Ликвидности**: Session/Daily Liquidity выступают как приоритетные POI.  
+4. **Техники Управления Позициями**: Single Candle Mitigation позволяет максимизировать profits в profitable trades.  
+
+Для дальнейшей разработки функционала TradingView рекомендуется реализовать:  
+- Автоматическое обнаружение Session/Daily Liquidity (Asian, London, NY sessions).  
+- Модуль Flip Entry с multi-timeframe correlation.  
+- Инструмент для Single Candle Mitigation (sweeping liquidity detection).  
+- Фильтр для Smart Money Trap (inducement/liquidity sweep confirmation).  
+
+Эти обновления делают алгоритм более устойчивым к манипуляциям "умных денег" и повышают вероятность прибыльных сделок.
+
 Обновленный алгоритм SMC интегрирует ключевые элементы новой методички:  
 1. **Структурный Анализ**: Обязательное подтверждение BOS/ChoCH полным закрытием свечи.  
 2. **Ликвидность Розничных Игроков**: Фильтрация сетапов в зонах трендовых линий/support/resistance.  
