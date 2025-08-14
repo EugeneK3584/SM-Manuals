@@ -1,7 +1,8 @@
+
 [[_TOC_]]
 
 
-# Объединенный анализ методичек по Smart Money Concept (SMC)[https://smart-money.trading](https://smart-money.trading/)
+## Объединенный анализ методичек по Smart Money Concept (SMC)[https://smart-money.trading](https://smart-money.trading/)
 
 
 ## Постановка задачи
@@ -21,10 +22,10 @@
 ## Процесс исследования.
 
 * Использовали Чат ЖПТ - разные версии
+* 
 ### Общее
 _
 
-### Объединенный анализ методичек по Smart Money Concept (SMC)
 
 #### **1. Сравнение терминов и выявление общих моментов**
 
